@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="authenticity_token" name="csrf-param">
+    <meta content="vA4xljFa7WoMaQMkxNntJe2sHJPCyBJOhl+ia5PiNyI=" name="csrf-token">
+    <title>SHARE</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  {% block basecss %}
+    <link href="/static/css/style.css" media="all" rel="stylesheet" type="text/css">
+    <link href="/static/css/mystyle.css" media="all" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+  {% endblock %}
+  {% block elsecss %}
+
+  {% endblock %}
+  {% block basejs %}
+    <script type="text/javascript" language='javascript'
+    src='/static/js/jquery-1.11.1.min.js' >
+    //http://code.jquery.com/jquery-1.11.1.min.js
+    </script>
+    <script type="text/javascript" language='javascript'
+    src='/static/js/csrf.js' >
+    </script>
+    <script src="/static/js/application.js" type="text/javascript"></script>
+    <script src="/static/js/bootstrap-popover.js" type="text/javascript"></script>
+    <script src="/static/js/bootstrap.js" type="text/javascript"></script>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/assets/font-awesome-ie7.min.css">
+    <![endif]--> 
+
+    <script src="/static/js/tip.js" type="text/javascript"></script>
+  {% endblock %}
+  {% block elsejs %}
+
+  {% endblock %}
+  </head>
+  <body>
+  {% block navi %}
+ 	 <div id="header" class="navbar-fixed-top ">
+    <div class="container">
+      <div class="navbar ">
+        <div class="navbar-inner">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </a>
+          <a href="/" class="brand">SHARE</a>        
+		      <nav class="nav-collapse collapse ">
+            <ul class="nav navbar primary-nav">                            
+              <li class=""><!--<li class="active">-->
+                <a href="/artical">
+                  文章
+                </a>
+              </li>              
+              <li class="">
+                <a href="/classify">
+                  分类
+                </a>
+              </li>
+              <li class="">
+				        <a href="/tags">
+                   标签
+                </a>
+              </li>
+              <li class="">
+                <a href="/huodong">
+                 活动
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  更多<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/mags">微博推荐</a></li>
+                  <li><a href="/mags/design">讨论区</a></li>                  
+                </ul>
+              </li>
+	          </ul>
+            <form class="navbar-search pull-left" action="/topics/search">
+              <input type="text" class="search-query span2" name="kw" placeholder="搜索">
+            </form>
+            <ul class="nav pull-right">
+                {% if currentuser.is_authenticated %}
+                <li id="unread"></li>          
+                <li class="dropdown">      
+                  <a href="/account/self" class="dropdown-toggle" data-toggle="dropdown">
+                    <img alt="silencewt" src="http://tp1.sinaimg.cn/2005118261/50/0/1">
+                    {{currentuser.username}}<b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/account/self">个人设置</a></li>           
+                    <li><a href="/notifications">消息通知</a></li>
+                    <li><a href="/account/logout">退出</a></li>
+                  </ul>
+                </li>
+                {% else %}
+                  <li><a href="/account/login">登入</a></li>
+                {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+	  </div>	
+	 </div>
+  {% endblock %}
+	{% block body %}
+
+  {% endblock %}
+  {% block foot %}
+    <!--tc_footer start -->
+    <div class="footer" style="margin-top:50px;">
+    <p>
+      <a href="/about" target="_blank">联系JK</a>
+      <a href="/mobile" target="_blank">联系JK</a>
+      <a href="/bbs/go/issues" target="_blank">联系JK</a>
+      <a href="/bbs" target="_blank">联系JK</a>
+    </p>
+    </div>
+  {% endblock %}
+  </body>
+</html>

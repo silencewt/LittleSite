@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+	<div class="mycontainer">
+    <form action="" method="post">
+      {% csrf_token %}
+    <div class="mymain">
+      <div>
+        <label>Title</label>
+        <input type="text" class=" form-control" style="width:98%;" placeholder="Title" name='name'>
+      </div>
+      <label>Content</label>
+      <div class="control-group text optional">
+        <textarea class="text optional" cols="40" id="topic_content" name="content" placeholder="话题内容" rows="10" style="width: 98%; overflow: hidden;"></textarea>
+        <div class="mycontent">
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary btn-inverse" data-disable-with="正在提交" name="commit" type="submit" value="创建">
+    </form>
+  </div>
+{% endblock %}

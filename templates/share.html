@@ -1,0 +1,83 @@
+﻿{% extends 'base.html' %}
+{% block body %}
+  <div id="flash_container" class="noPrint">    
+    <!-- <a href='#'' class='close' data-dismiss='alert'>¡Á</a> -->
+  </div>
+    
+  <div class="container-fluid">  
+  <!-- body start-->
+  <div class="row-fluid">
+	  <div class="span9">
+      <div class="header-title">
+        <span>推荐文章</span>
+      </div>
+
+      <div class="list_article">
+        {%for item in sharelist%}
+	      <div class="single_fake" data-id="VZnqAn">
+		      <div class="single">
+            <div class="article_title abs-title">
+        	    <a href="/share/text/{{item.id}}" class="article-list-title" target="_blank" title="{{item.name}}">{{item.name}}</a>
+        
+            </div>
+			      <div class="article_cut">
+				      {{item.content}}
+			      </div>
+			      <div class="clear"></div>
+		      </div>
+		      <div class="tip meta-tip">
+				    <span class="cut cut28">
+					   <i class="icon-file icon"></i>
+					    <a href="/account/{{item.author.id}}">{{item.author}}</a>
+				    </span>
+			      <span>
+				      <i class="icon-time icon"></i>
+			        {{item.date_joined}}
+			      </span>
+      
+			      <div class="clear"></div>
+		      </div>
+	      </div>
+        {% endfor %}
+      <a href="/share/new" class="btn btn-primary btn-lg active" style="float:right;" role="button">create</a>
+      </div>
+    </div>
+
+    <div class="span3">
+      <div class="bs-docs-sidebar">
+        <ul class="nav nav-list right-rec-sidebar affix-top" data-spy="affix" data-offset-top="40">
+          <li id="rec" class="active">
+            <a href="/a/">推 荐 文 章 </a>
+           </li>
+          <li id="rec_best">
+            <a href="/ab/">精 华 文 章 </a>
+          </li>
+          <li id="hot">
+            <a href="/ah/">随 便 看 看 </a>
+          </li>
+          <li>
+            <a target="_blank" href="/articles/weekly">一 周 拾 遗 </a>
+          </li>
+          <li id="kans">
+            <a href="/kans">我 的 推 刊 </a>
+          </li>
+          <li id="my">
+            <a href="/articles/my">我 的 收 藏 </a>
+          </li>
+          <li>
+            <a target="_blank" href="/my_comments">我 的 评 论 </a>
+          </li>
+          <li id="late">
+            <a href="/articles/late">待 读 文 章 <span class="read_late_count"></span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+     $(document).ready( function() {
+       $('#rec').addClass('active');
+     })
+  </script>
+  </div>
+{% endblock %}

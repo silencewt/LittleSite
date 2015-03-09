@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block body %}
+  <div id="flash_container" class="noPrint">    
+    <!-- <a href='#'' class='close' data-dismiss='alert'>¡Á</a> -->
+  </div>
+
+  <div class="container-fluid"  style="background-image: url('/static/images/background.jpg');background-repeat: repeat-y; ">
+    <div class="row-fluid">
+      <div class="span9 contant" >
+        <h1>{{text.name}}</h1>
+        <div class="article_meta">
+          <span class="timestamp">{{text.date_joined}}</span>
+          <span class="from">
+            <i class="icon-globe"></i>
+              <a class="cut cut28 from" href="/account/{{text.author.id}}" target="_blank">{{text.author}}
+              </a>
+          </span>
+        </div>
+        <div class="artical_body" id="text{{text.id}}" >
+          <p>{{text.content}}</p>
+        </div>
+      </div>
+
+      <div class="span3"><!--  侧边栏内容 -->
+
+      </div>
+    </div>
+    <!--  comment内容 -->
+    <div class="row-fluid" style="margin-top:0;">
+      <div class="span9">
+        <div class="comments">
+          <div class="cover"></div>
+          <div class="comments-area" style="">
+            
+            <div class="comments-list" style="display: block;">
+                <div class="empty-cmts alert alert-success" style="display:none;">
+                    没有更多评论了^^
+                </div>
+            <div class="single" id="c-3720155098362481">                  
+              <img class="round_img avatar" src="http://tp1.sinaimg.cn/1648215184/50/22867464569/1">                            
+              <div class="comment-item" style="padding:0 0 0 5px;">     
+                <div class="info">
+                  <a class="uname" href="http://www.weibo.com/u/1648215184" target="_blank">新媒体董少伟
+                  </a>
+                  <span class="timestamp">06-11 05:59</span>                  
+                  <div class="reply dropdown" style="display: none;">         
+                    <a class="dropdown-toggle share" data-toggle="dropdown">分享<b class="caret"></b></a>                            
+                    <ul class="dropdown-menu">                          
+                      <li>                            
+                        <a target="blank" href="http://share.baidu.com/s?type=text&amp;searchPic=0&amp;sign=on&amp;to=tsina&amp;url=http://www.tuicool.com/articles/2yUJRn&amp;title=分享评论:微博的未来 //新浪微博上市后首次发布新版：进军手机游戏领域、打造移动生活服务体系、全面开放微博支付（分享自 @推酷网）">新浪微博
+                        </a>                          
+                      </li>                          
+                      <li>                           
+                        <a target="blank" href="http://share.baidu.com/s?type=text&amp;searchPic=0&amp;sign=on&amp;to=tqq&amp;url=http://www.tuicool.com/articles/2yUJRn&amp;title=分享评论:微博的未来 //新浪微博上市后首次发布新版：进军手机游戏领域、打造移动生活服务体系、全面开放微博支付（分享自 @tuicool）">腾讯微博
+                        </a>                          
+                      </li>   
+                    </ul>                       
+                  </div>                               
+                </div>                              
+                <div class="body">微博的未来</div>                            
+              </div>                             
+            </div>
+          </div>
+
+          <div class="comments-header" style="display: block;">
+            <h5>我要评论</h5>
+            <div class="alert comment-alert alert-error" style="display:none;">
+              错误
+            </div>
+            <textarea name="comment[body]" id="comment-body" cols="60" rows="5" placeholder="请输入评论内容..."></textarea>
+            <a href="javascript:commentsub();" class="btn btn-primary btn-medium btn-submit" id="comment-submit">发表评论</a>
+            <p style="margin-top: 5px;margin-left:10px;">
+
+              <!--这个从数据库获取的-->
+              已发表评论数(<span class="comment_cnt">3</span>)
+            </p>
+          </div>
+
+        </div>
+        </div>
+      <div class="span3"></div>
+    </div>
+  </div>
+  </div>
+{% endblock %}
