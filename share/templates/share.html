@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% block main %}
+<ul>
+	{%for item in typelist%}
+		<li><input type="button" name="type" value={{ item }} /></li>
+	{% endfor %}
+</ul>
+<div id='create'>
+	<div id='createtext' style="display: none">
+		<textarea rows='10' cols='30' id='content'></textarea><br/>
+		type:<label id='type'>text</label>
+		<label> name:</label><input type='text' id='name' /><input type='button' name='submit' value='submit'/>
+	</div>
+</div>
+<div id='sharelist'>
+	<ul>
+		{%for item in sharelist%}
+			<li>
+				{% ifequal item.type 'text'%}
+					<div id='textitem'>
+						<a href="/share/text/{{item.id}}">{{item.name}}</a>,{{item.content}},
+						<a href="/account/{{item.author.id}}">{{item.author}}</a>,{{item.date_joined}}
+					</div>
+				{% endifequal %}
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+<script type="text/javascript" language='javascript'>
+	$(document).ready(function(){
+		$("input[name='type']").on("click",function(){
+			if( $(this).val() == 'text' ){
+				//$('div#create').html("<textarea rows='10' cols='30' id='content'></textarea><br/>type:<label id='type'>text</label><label> name:</label><input type='text' id='name' /><input type='button' name='submit' value='submit'/>");
+				 $("div#createtext").toggle('fast');
+			}
+		});
+		$('body').on('click', "input[name='submit']", function(){
+			var type = $('label#type').text();
+			var content = $.trim($('textarea#content').val());
+			var name = $.trim($('input#name').val());
+			if( !type || !content || !name ){
+				alert('null imput');
+				return ;
+			}
+			$.post('/share/submit', { 'type':type,'content':content,'name':name }, function( data ){ 
+					if(data.status == 'error')
+						alert('error, check and submit again');
+					else if (data.status == 'success')
+						location.reload();
+			}, "json");
+		});
+	});
+</script>
+{% endblock %}

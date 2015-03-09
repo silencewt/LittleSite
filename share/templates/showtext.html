@@ -1,0 +1,6 @@
+{% extends 'base.html'%}
+{% block main %}
+<div id='textitem'>
+	{{text.name}},{{text.content}},<a href="/account/{{text.author.id}}">{{text.author}}</a>,{{text.date_joined}}
+</div>
+{% endblock %}
